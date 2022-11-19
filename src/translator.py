@@ -1,7 +1,7 @@
 import json
 import logging
 
-from settings import InfoMsgs, LanguageEnum
+from src.settings import InfoMsgs, LanguageEnum
 from youtube_transcript_api import YouTubeTranscriptApi, TranscriptList
 
 class Video:
@@ -38,10 +38,10 @@ class Transcriber:
             sanitized_text = self.sanitize_text(caption["text"])
             end = caption["start"] + caption["duration"]
             video.captions.append(
-                self.Caption(caption["start"], end, caption["duration"], sanitized_text)
+                Caption(caption["start"], end, caption["duration"], sanitized_text)
             )
 
-    def check_manual_and_langauge(transcript_list: TranscriptList):
+    def check_manual_and_langauge(self, transcript_list: TranscriptList):
         found_manual = False
         caption_dict = None
         for transcript in transcript_list:
@@ -60,15 +60,15 @@ class Transcriber:
     def sanitize_transcript(self, video_id: str, transcript_list: TranscriptList):
         logging.info(InfoMsgs.sanitizing_video.format(video_id=video_id))
 
-        found_manual, caption_dict = self.check_manual_and_langauge()
+        found_manual, caption_dict = self.check_manual_and_langauge(transcript_list)
 
         if not caption_dict:
             logging.info(InfoMsgs.couldnt_find_caption.format(video_id=video_id))
-            video = self.Video(0, False)
+            video = Video(0, False)
             json_video = json.dumps(video, default=lambda o: o.__dict__)
             return json_video
 
-        video = self.Video(video_id, found_manual)
+        video = Video(video_id, found_manual)
         self.append_captions_to_video(video, caption_dict)
 
         return video

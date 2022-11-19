@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from api.translator import Transcriber
+from src.translator import Transcriber
 
 app = FastAPI()
 transcriber = Transcriber()
