@@ -1,5 +1,6 @@
 import os
 
+
 class InfoMsgs:
     authorized_user = "User logged in with name: {name} and email: {email}."
     unsuccessful_login = "User attempted login but failed."
@@ -11,10 +12,14 @@ class InfoMsgs:
     )
     couldnt_find_caption = "Couldn't find caption for video with ID: {video_id}."
     sanitizing_video = "Sanitizing transcript for video with ID: {video_id}."
-    getting_transcription_list = "Getting transcription list for video with ID: {video_id}."
-    
+    getting_transcription_list = (
+        "Getting transcription list for video with ID: {video_id}."
+    )
+
+
 class LanguageEnum:
     ENGLISH = "English"
+
 
 class Config:
     GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", "")

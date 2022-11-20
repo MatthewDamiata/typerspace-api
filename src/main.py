@@ -6,6 +6,7 @@ from src.api.api import get_transcript_list
 app = FastAPI()
 transcriber = Transcriber()
 
+
 @app.get("/video/{video_id}")
 def read_transcript(video_id: str):
     """

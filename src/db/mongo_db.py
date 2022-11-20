@@ -29,6 +29,7 @@ class MongoDatabase:
         :param func: function to be decorated
         :return: decorated function
         """
+
         def inner_function(*args, **kwargs):
             try:
                 func(*args, **kwargs)

@@ -14,6 +14,8 @@ def get_transcript_list(video_id: str) -> TranscriptList:
         logging.info(InfoMsgs.getting_transcription_list.format(video_id=video_id))
         transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
     except Exception as e:
-        logging.error(InfoMsgs.transcribed_video_error.format(video_id=video_id, error=e))
+        logging.error(
+            InfoMsgs.transcribed_video_error.format(video_id=video_id, error=e)
+        )
         return {"error": e}
     return transcript_list

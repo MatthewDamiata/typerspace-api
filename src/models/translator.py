@@ -6,11 +6,14 @@ from youtube_transcript_api import TranscriptList
 from src.common.settings import InfoMsgs, LanguageEnum
 from src.models.video import Video
 
+
 class Transcriber:
     def __init__(self):
         logging.basicConfig(format="%(asctime)s %(message)s")
 
-    def check_manual_and_language(self, transcript_list: TranscriptList) -> Union[bool, TranscriptList]:
+    def check_manual_and_language(
+        self, transcript_list: TranscriptList
+    ) -> Union[bool, TranscriptList]:
         """
         Check if the transcript is manual and if the language is English
         :param transcript_list: transcript list
@@ -31,7 +34,9 @@ class Transcriber:
 
         return found_manual, caption_dict
 
-    def sanitize_transcript_and_create_video(self, video_id: str, transcript_list: TranscriptList) -> Video:
+    def sanitize_transcript_and_create_video(
+        self, video_id: str, transcript_list: TranscriptList
+    ) -> Video:
         """
         Sanitize the transcript
         :param video_id: video id
