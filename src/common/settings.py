@@ -1,3 +1,5 @@
+import os
+
 class InfoMsgs:
     authorized_user = "User logged in with name: {name} and email: {email}."
     unsuccessful_login = "User attempted login but failed."
@@ -13,3 +15,11 @@ class InfoMsgs:
     
 class LanguageEnum:
     ENGLISH = "English"
+
+class Config:
+    GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", "")
+    GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", "")
+
+    MONGO_APP = os.environ.get("MONGO_APP", "")
+    MONGO_LINK = os.environ.get("MONGO_LINK", "")
+    MONGO_PASS = os.environ.get("MONGO_PASS", "")

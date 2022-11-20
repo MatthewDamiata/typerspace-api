@@ -1,5 +1,7 @@
 from fastapi import FastAPI
-from src.translator import Transcriber
+from src.models.translator import Transcriber
+from src.api.api import get_transcript_list
+
 
 app = FastAPI()
 transcriber = Transcriber()
@@ -11,4 +13,8 @@ def read_transcript(video_id: str):
     :param video_id: the id of the video
     :return: the transcript of the video
     """
-    return transcriber.get_video_json(video_id)
+    transcript_list = get_transcript_list(video_id)
+    video = transcriber.sanitize_transcript_and_create_video(video_id, transcript_list)
+    video_json = video.get_video_json()
+
+    return video_json
