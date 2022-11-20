@@ -4,6 +4,7 @@ from youtube_transcript_api import TranscriptList
 from src.models.caption import Caption
 from src.common.utils import sanitize_text
 
+
 class Video:
     def __init__(self, id, manual):
         """
@@ -36,4 +37,3 @@ class Video:
         """
         json_video = json.dumps(self.__dict__, default=lambda o: o.__dict__)
         return json_video
-        
