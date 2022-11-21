@@ -21,7 +21,7 @@ run_dev_server() {
 
 run_unit_tests() {
     echo "Running unit tests..."
-    poetry run python -m pytest -vv -s --junitxml=pytest.xml --cov-report=term-missing --cov=. src/tests/unit
+    poetry run python -m pytest -vv -s --cov-report lcov --cov=. src/tests/unit
 }
 
 run_pre_commits() {

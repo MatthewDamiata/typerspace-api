@@ -33,17 +33,9 @@ jobs:
       - name: Run Tests
         run: |
           ./typerspace test
-          mv pytest.xml ${{ github.workspace }}
 
-      - name: Code Coverage Report
-        uses: irongut/CodeCoverageSummary@v1.3.0
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
         with:
-          filename: pytest.xml
-          badge: true
-          fail_below_min: true
-          format: markdown
-          hide_branch_rate: true
-          hide_complexity: true
-          indicators: true
-          output: console
-          thresholds: '60 85'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: coverage.lcov
