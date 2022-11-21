@@ -33,7 +33,15 @@ jobs:
       - name: Run Tests
         run: ./typerspace test
 
-      - name: Code Coverage
-        uses: MishaKav/pytest-coverage-comment@main
+      - name: Code Coverage Report
+        uses: irongut/CodeCoverageSummary@v1.3.0
         with:
-          junitxml-path: ./pytest.xml
+          filename: pytest.xml
+          badge: true
+          fail_below_min: true
+          format: markdown
+          hide_branch_rate: true
+          hide_complexity: true
+          indicators: true
+          output: console
+          thresholds: '60 80'
