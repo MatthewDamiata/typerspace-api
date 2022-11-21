@@ -1,3 +1,14 @@
+## 0.2.2 (2022-11-21)
+
+### Fix
+
+- use coveralls
+- move file to workspace
+- try new code cov
+- remove coverage
+- runnable typerspace file
+- update tests and add driver file
+
 ## 0.2.1 (2022-11-21)
 
 ### Fix
