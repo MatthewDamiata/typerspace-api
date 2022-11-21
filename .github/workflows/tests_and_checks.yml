@@ -31,7 +31,9 @@ jobs:
         run: ./typerspace checks
 
       - name: Run Tests
-        run: ./typerspace test
+        run: |
+          ./typerspace test
+          mv pytest.xml ${{ github.workspace }}
 
       - name: Code Coverage Report
         uses: irongut/CodeCoverageSummary@v1.3.0
@@ -44,4 +46,4 @@ jobs:
           hide_complexity: true
           indicators: true
           output: console
-          thresholds: '60 80'
+          thresholds: '60 85'
