@@ -39,7 +39,7 @@ case $1 in
   test|tests)
     run_unit_tests
     ;;
-  checks|precommits|pre-commits)
+  check|checks|precommits|pre-commits)
     run_pre_commits
     ;;
   *)
