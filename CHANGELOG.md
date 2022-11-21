@@ -1,3 +1,11 @@
+## 0.2.1 (2022-11-21)
+
+### Fix
+
+- use python -m in ci, add precommit
+- test path
+- file structure and add first test
+
 ## 0.2.0 (2022-11-21)
 
 ### Feat
