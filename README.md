@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/MatthewDamiata/typerspace-api/badge.svg?branch=main)](https://coveralls.io/github/MatthewDamiata/typerspace-api?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/MatthewDamiata/typerspace-api/badge.png?branch=main)](https://coveralls.io/github/MatthewDamiata/typerspace-api?branch=main&kill_cache=1)
 
 # API for [typerspace](https://github.com/benjaminlapidus/typerspace), built with FastAPI
 
