@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/MatthewDamiata/typerspace-api/badge.svg?branch=main)](https://coveralls.io/github/MatthewDamiata/typerspace-api?branch=main)
+
 # API for [typerspace](https://github.com/benjaminlapidus/typerspace), built with FastAPI
 
 ## What is Typerspace?
