@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  tests:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -26,9 +26,8 @@ jobs:
       - name: Run tests
         run: |
           source .venv/bin/activate
-          pytest --junitxml=pytest.xml --cov-report=term-missing:skip-covered --cov=typerspace-api tests/unit | tee pytest-coverage.txt
+          pytest --junitxml=pytest.xml --cov-report=term-missing:skip-covered --cov=typerspace-api tests/unit
       - name: Coverage
         uses: MishaKav/pytest-coverage-comment@main
         with:
-          pytest-coverage-path: ./pytest-coverage.txt
           junitxml-path: ./pytest.xml

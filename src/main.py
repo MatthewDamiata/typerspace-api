@@ -1,10 +1,8 @@
-from fastapi import FastAPI
-from src.models.translator import Transcriber
-from src.api.api import get_transcript_list
-
+from fastapi import FastAPI, HTTPException
+from src.api.youtube_api import get_transcript
+from src.models.video import Video
 
 app = FastAPI()
-transcriber = Transcriber()
 
 
 @app.get("/video/{video_id}")
@@ -14,8 +12,9 @@ def read_transcript(video_id: str):
     :param video_id: the id of the video
     :return: the transcript of the video
     """
-    transcript_list = get_transcript_list(video_id)
-    video = transcriber.sanitize_transcript_and_create_video(video_id, transcript_list)
-    video_json = video.get_video_json()
+    transcript = get_transcript(video_id)
+    if not transcript:
+        raise HTTPException(status_code=404, detail="Video not found")
 
-    return video_json
+    video = Video(video_id, transcript)
+    return video.get_video_json()

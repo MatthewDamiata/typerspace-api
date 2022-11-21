@@ -1,28 +1,27 @@
-import json
+from __future__ import annotations
 
-from youtube_transcript_api import TranscriptList
+import json
 from src.models.caption import Caption
 from src.common.utils import sanitize_text
 
 
 class Video:
-    def __init__(self, id, manual):
+    def __init__(self, id, transcript) -> Video:
         """
         Initialize the video object
         :param id: video id
-        :param manual: manual transcript
+        :param transcript: dict transcript
         """
         self.id = id
-        self.manual = manual
+        self.transcript = transcript
         self.captions = []
+        self.append_captions_to_video()
 
-    def append_captions_to_video(self, caption_dict: TranscriptList) -> None:
+    def append_captions_to_video(self) -> None:
         """
         Append the captions to the video object
-        :param video: video object
-        :param caption_dict: dictionary of captions
         """
-        for caption in caption_dict:
+        for caption in self.transcript:
             sanitized_text = sanitize_text(caption["text"])
             end = caption["start"] + caption["duration"]
             self.captions.append(
@@ -32,8 +31,7 @@ class Video:
     def get_video_json(self) -> str:
         """
         Get the video transcript in JSON format
-        :param video_id: video id
-        :return: video transcript in JSON format
+        :return: JSON string
         """
         json_video = json.dumps(self.__dict__, default=lambda o: o.__dict__)
         return json_video
