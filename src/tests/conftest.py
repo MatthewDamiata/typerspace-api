@@ -26,6 +26,14 @@ def validate_transcript():
 
 
 @pytest.fixture()
+def mock_get_404_transcript():
+    def wrapper(video_id):
+        return None
+
+    return wrapper
+
+
+@pytest.fixture()
 def mock_get_transcript():
     def wrapper(video_id):
         return [

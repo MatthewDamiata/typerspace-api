@@ -1,0 +1,46 @@
+#!/bin/bash
+set -e
+
+install_requirements() {
+    echo "Installing requirements..."
+    poetry install -v
+    poetry run pip install --quiet --upgrade pip wheel setuptools
+
+    if [[ ! -d .git ]]; then
+        git init
+    fi
+
+    echo "Installing pre-commit hooks"
+    poetry run pre-commit install
+}
+
+run_dev_server() {
+    echo "Starting dev server..."
+    poetry run uvicorn run:app --reload
+}
+
+run_unit_tests() {
+    echo "Running unit tests..."
+    poetry run python -m pytest -vv -s --cov-report lcov --cov=. src/tests/unit
+}
+
+run_pre_commits() {
+    echo "Running pre-commit hooks..."
+    poetry run pre-commit run --all-files
+}
+
+case $1 in
+  install)
+    install_requirements
+    ;;
+  service)
+    run_dev_server
+    ;;
+  test|tests)
+    run_unit_tests
+    ;;
+  checks|precommits|pre-commits)
+    run_pre_commits
+    ;;
+  *)
+esac
