@@ -21,6 +21,10 @@ Run `./typerspace test` to run the tests.
 Run `./typerspace service` to run the server.
 > This is only for development purposes, production is not supported yet.
 
+## OpenAPI
+
+To view the docs, run the server and go to `http://127.0.0.1:8000/docs`.
+
 ## Contributing
 
 1. Fork the repository.
