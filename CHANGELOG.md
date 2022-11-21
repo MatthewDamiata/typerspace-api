@@ -1,3 +1,9 @@
+## 0.2.4 (2022-11-21)
+
+### Fix
+
+- run tests and checks on pr and push
+
 ## 0.2.3 (2022-11-21)
 
 ### Fix
