@@ -4,7 +4,7 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from src.common.settings import InfoMsgs
 
 
-def get_transcript(video_id: str) -> dict:
+def get_transcript_from_api(video_id: str) -> dict:
     """
     Get the transcript for a video using YoutubeTranscriptApi
     :param video_id: video id
