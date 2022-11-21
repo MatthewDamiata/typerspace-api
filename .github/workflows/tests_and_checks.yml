@@ -23,10 +23,14 @@ jobs:
           installer-parallel: true
       - name: Install project
         run: poetry install --no-interaction
+      - name: Precommits
+        run: |
+          poetry run pre-commit install
+          poetry run pre-commit run --all-files
       - name: Run tests
         run: |
           source .venv/bin/activate
-          pytest --junitxml=pytest.xml --cov-report=term-missing:skip-covered --cov=typerspace-api src/tests/unit
+          poetry run python -m pytest --junitxml=pytest.xml --cov-report=term-missing:skip-covered --cov=typerspace-api src/tests/unit
       - name: Coverage
         uses: MishaKav/pytest-coverage-comment@main
         with:
