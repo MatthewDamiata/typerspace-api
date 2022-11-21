@@ -1,6 +1,8 @@
 import pytest
 import ulid
 
+from youtube_transcript_api import TranscriptsDisabled
+
 
 @pytest.fixture()
 def generate_random_youtube_id():
@@ -34,8 +36,16 @@ def mock_get_404_transcript():
 
 
 @pytest.fixture()
-def mock_get_transcript():
+def mock_raise_transcripts_disabled():
     def wrapper(video_id):
+        raise TranscriptsDisabled(video_id)
+
+    return wrapper
+
+
+@pytest.fixture()
+def mock_get_transcript():
+    def wrapper(video_id, languages=[]):
         return [
             {
                 "text": "You were on your way home, when you died.",
