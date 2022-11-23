@@ -10,7 +10,7 @@ install_requirements() {
         git init
     fi
 
-    echo "Installing pre-commit hooks"
+    echo "Installing pre-commit hooks..."
     poetry run pre-commit install
 }
 

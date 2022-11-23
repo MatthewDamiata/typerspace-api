@@ -42,3 +42,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: coverage.lcov
+
+      - name: Test Build
+        run: ./typerspace service
